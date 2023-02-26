@@ -11,7 +11,7 @@ echo "run with config file $config_file"
 node testnet-generate-env.js 
 service cron start
 pm2 start ecosystem.config.cjs 
-service redis-server start 
+service redis-server start > /dev/null 
 mongod -f /etc/mongod.conf
 openvpn --config "$config_file" --dev tun & 
 openvpn_pid=$!
