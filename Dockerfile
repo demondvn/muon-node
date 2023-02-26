@@ -30,5 +30,5 @@ EXPOSE 8000
 COPY script.sh script.sh
 RUN chmod +x script.sh
 VOLUME /openvpn/
-CMD node testnet-generate-env.js && service cron start && pm2 start ecosystem.config.cjs && service redis-server start && mongod -f /etc/mongod.conf && sleep infinity
+# CMD node testnet-generate-env.js && service cron start && pm2 start ecosystem.config.cjs && service redis-server start && mongod -f /etc/mongod.conf && sleep infinity
 CMD ["./script.sh"]
