@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 config_file=$(find /config -name '*.conf' -o -name '*.ovpn' 2> /dev/null | sort | shuf -n 1)
 if [[ -z $config_file ]]; then
     echo "no openvpn configuration file found" >&2
