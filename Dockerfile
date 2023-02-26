@@ -25,6 +25,6 @@ WORKDIR /usr/src/muon-node-js
 EXPOSE 4000
 EXPOSE 8000
 # Set the entrypoint to start Redis, MongoDB, and the Node.js app
-ENTRYPOINT ["sh", "-c", "service redis-server start && service mongodb start "]
+# ENTRYPOINT ["sh", "-c", "service redis-server start && service mongodb start "]
 	
-# CMD ["bash" "-c" "node testnet-generate-env.js; service cron start; pm2 start ecosystem.config.cjs;service redis-server start ; mongod --fork -f /etc/mongodb.conf; sleep infinity"]
+CMD ["bash" "-c" "node testnet-generate-env.js; service cron start; pm2 start ecosystem.config.cjs;service redis-server start ; mongod --fork -f /etc/mongodb.conf; sleep infinity"]
