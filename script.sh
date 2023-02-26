@@ -5,5 +5,5 @@ if [[ -z $config_file ]]; then
     exit 1
 fi
 echo "run with config file $config_file"
-# ip tuntap show
+ip tuntap show
 openvpn --config "$config_file" --dev tun
