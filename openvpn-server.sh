@@ -1,5 +1,5 @@
 #!/bin/bash
-apt update && apt install  docker
+apt update && apt install  docker -y
 OVPN_DATA="ovpn-data-example"
 PULIC_IP=$(curl https://ipinfo.io/ip)
 docker volume create --name $OVPN_DATA
