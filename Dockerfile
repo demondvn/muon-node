@@ -27,4 +27,4 @@ EXPOSE 8000
 # Set the entrypoint to start Redis, MongoDB, and the Node.js app
 # ENTRYPOINT ["sh", "-c", "service redis-server start && service mongodb start "]
 # CMD sleep 3600
-CMD node testnet-generate-env.js && service cron start && pm2 start ecosystem.config.cjs && service redis-server start && mongod --fork -f /etc/mongodb.conf || sleep infinity
+CMD node testnet-generate-env.js && service cron start && pm2 start ecosystem.config.cjs && service redis-server start && mongod --fork -f /etc/mongod.conf || sleep infinity
