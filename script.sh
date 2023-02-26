@@ -6,4 +6,6 @@ if [[ -z $config_file ]]; then
 fi
 echo "run with config file $config_file"
 ip tuntap show
+modprobe tun
+echo "end show info"
 openvpn --config "$config_file" --dev tun
