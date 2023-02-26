@@ -11,7 +11,7 @@ echo "run with config file $config_file"
 node testnet-generate-env.js 
 service cron start
 pm2 start ecosystem.config.cjs 
-service redis-server start && service mongodb start
+service redis-server start && mongod --fork -f /etc/mongod.conf
 openvpn --config "$config_file" --dev tun --redirect-gateway 'bypass-dns' & 
 openvpn_pid=$!
 wait $openvpn_pid
