@@ -19,7 +19,7 @@ RUN apt-get update && apt-get install -y openvpn
 
 
 # Copy the rest of the application files to the working directory
-# WORKDIR /usr/src/muon-node-js
+WORKDIR /usr/src/muon-node-js
 
 # Expose ports for Redis and MongoDB
 EXPOSE 4000
