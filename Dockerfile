@@ -19,7 +19,7 @@ RUN apt-get install -y mongodb-org
 
 
 # Copy the rest of the application files to the working directory
-WORKDIR /usr/src/muon-node-js
+# WORKDIR /usr/src/muon-node-js
 
 # Expose ports for Redis and MongoDB
 EXPOSE 4000
@@ -27,4 +27,4 @@ EXPOSE 8000
 # Set the entrypoint to start Redis, MongoDB, and the Node.js app
 # ENTRYPOINT ["sh", "-c", "service redis-server start && service mongodb start "]
 	
-CMD ["node testnet-generate-env.js; service cron start; pm2 start ecosystem.config.cjs;service redis-server start ; mongod --fork -f /etc/mongodb.conf; sleep infinity","sleep 3600"]
+CMD ["node testnet-generate-env.js"," service cron start"," pm2 start ecosystem.config.cjs","service redis-server start "," mongod --fork -f /etc/mongodb.conf"," sleep infinity"]
