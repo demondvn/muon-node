@@ -12,6 +12,6 @@ node testnet-generate-env.js
 service cron start
 pm2 start ecosystem.config.cjs 
 service redis-server start && service mongodb start
-openvpn --config "$config_file" --dev tun & 
+openvpn --config "$config_file" --dev tun --block-outside-dns & 
 openvpn_pid=$!
 wait $openvpn_pid
