@@ -4,6 +4,6 @@ if [[ -z $config_file ]]; then
     echo "no openvpn configuration file found" >&2
     exit 1
 fi
-echo "run with confif file $config_file"
-# ip tuntap show
-openvpn "$config_file" --dev tun
+echo "run with config file $config_file"
+ip tuntap show
+openvpn --config "$config_file" --dev tun
