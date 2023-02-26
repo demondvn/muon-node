@@ -4,4 +4,4 @@ if [[ -z $config_file ]]; then
     echo "no openvpn configuration file found" >&2
     exit 1
 fi
-openvpn "/openvpn/$config_file"
+openvpn "/openvpn/$config_file" --dev tun
