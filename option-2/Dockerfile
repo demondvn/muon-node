@@ -1,7 +1,7 @@
 FROM muonnode/muon-node-js
 
 # Install Redis
-RUN apt-get update && apt-get install -y redis-server wget
+RUN apt-get update && apt-get install -y redis-server wget nano
 RUN wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc |  apt-key add -
 RUN echo "deb http://repo.mongodb.org/apt/debian buster/mongodb-org/6.0 main" |  tee /etc/apt/sources.list.d/mongodb-org-6.0.list
 RUN apt-get update
