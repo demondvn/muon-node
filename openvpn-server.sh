@@ -19,3 +19,6 @@ docker run -v $OVPN_DATA:/etc/openvpn --rm -it kylemanna/openvpn easyrsa build-c
 docker run -v $OVPN_DATA:/etc/openvpn --rm kylemanna/openvpn ovpn_getclient "$PULIC_IP" > "$PULIC_IP.ovpn"
 echo "Complete plz copy file $PULIC_IP to client"
 ls | grep "$PULIC_IP"
+curl -s "$IP"
+curl -s "$PULIC_IP:4000"
+curl -s "$PULIC_IP:1194"
