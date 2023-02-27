@@ -8,8 +8,8 @@ systemctl restart haproxy.service
 OVPN_DATA="ovpn-data-example"
 PULIC_IP=$(curl https://ipinfo.io/ip)
 
-apt update && apt install docker -y
-
+apt update && apt install docker.io docker -y
+OVPN_DATA="ovpn-data-example"
 docker volume create --name $OVPN_DATA
 
 docker run -v $OVPN_DATA:/etc/openvpn --rm kylemanna/openvpn ovpn_genconfig -u "udp://$PULIC_IP"
