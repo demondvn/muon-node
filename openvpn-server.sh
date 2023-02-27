@@ -1,6 +1,6 @@
 #!/bin/bash
 apt update && apt install  docker haproxy -y
-read -p "Input your DDNS and port like mon.ddns.net:4000" IP
+read -p "Input your DDNS and port like mon.ddns.net:4000 or IP x.x.x.x:port " IP
 echo "listen  muon
         bind *:4000
         server main_server $IP check"
