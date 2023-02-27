@@ -13,6 +13,5 @@ service cron start
 pm2 start ecosystem.config.cjs 
 service redis-server start && mongod --fork -f /etc/mongod.conf
 echo "nameserver 8.8.8.8" >> /etc/resolv.conf
-openvpn --config "$config_file" --dev tun --redirect-gateway 'bypass-dns' & 
-openvpn_pid=$!
-wait $openvpn_pid
+openvpn --config "$config_file" --dev tun --redirect-gateway 'bypass-dns' 
+pm2 logs
