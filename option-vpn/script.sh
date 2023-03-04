@@ -15,7 +15,8 @@ cd /usr/src/muon-node-js
 node testnet-generate-env.js 
 service cron start
 pm2 start ecosystem.config.cjs 
-service redis-server start && mongod --fork -f /etc/mongod.conf
+service redis-server start &
+mongod --fork -f /etc/mongod.conf &
 echo "nameserver 8.8.8.8" >> /etc/resolv.conf
 
 wait $openvpn_pid
