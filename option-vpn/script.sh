@@ -1,5 +1,6 @@
 #!/bin/sh
-config_file=$(find /openvpn -name '*.ovpn' 2> /dev/null | sort | shuf -n 1)
+cd /openvpn
+config_file=$(find -name '*.ovpn' 2> /dev/null | sort | shuf -n 1)
 if [[ -z $config_file ]]; then
     echo "no openvpn configuration file found" >&2
     exit 1
