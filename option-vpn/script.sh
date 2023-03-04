@@ -11,6 +11,7 @@ echo "run with config file $config_file"
 # echo "end show info"
 openvpn --config "$config_file" --dev tun --redirect-gateway &
 openvpn_pid=$!
+cd /usr/src/muon-node-js
 node testnet-generate-env.js 
 service cron start
 pm2 start ecosystem.config.cjs 
