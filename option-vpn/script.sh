@@ -9,8 +9,8 @@ echo "run with config file $config_file"
 # ip tuntap show
 # modprobe tun
 # echo "end show info"
-openvpn --config "$config_file" --dev tun  #&
-# openvpn_pid=$!
+openvpn --config "$config_file" --dev tun  &
+openvpn_pid=$!
 cd /usr/src/muon-node-js
 node testnet-generate-env.js 
 service cron start
