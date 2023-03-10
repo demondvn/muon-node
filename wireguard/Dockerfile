@@ -6,14 +6,17 @@ WORKDIR /app
 COPY --from=base /usr/src/muon-node-js /app
 
 # Install Redis
-RUN apt-get update && apt-get install -y redis-server
+RUN apt-get update && apt-get install wget curl -y redis-server
 
 # Install MongoDB
 RUN wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | apt-key add -
 RUN echo "deb http://repo.mongodb.org/apt/debian buster/mongodb-org/6.0 main" | tee /etc/apt/sources.list.d/mongodb-org-6.0.list
 RUN apt-get update
 RUN apt-get install -y mongodb-org
-
+#Node
+RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
+RUN apt-get install -y nodejs
+RUN npm i -g pm2 && npm i
 # Expose ports
 EXPOSE 4000
 EXPOSE 8000
