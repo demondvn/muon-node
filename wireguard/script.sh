@@ -1,5 +1,6 @@
 #!/bin/bash
-
+ls
+/init
 cd /app
 node testnet-generate-env.js 
 service cron start
