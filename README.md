@@ -21,9 +21,11 @@
 
 2/ input pass `P@ssw0rd`
 
-3/ create client `wg0` > download setting file info client `root/vpn/1`
+3/ create client `wg0` > download setting file  
 
 4/ edit wg0.conf remove `::/0`     
+
+5/ move client ex: `root/vpn/1`
 
 ## Build Client
 
