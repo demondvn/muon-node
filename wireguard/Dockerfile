@@ -1,10 +1,8 @@
 FROM muonnode/muon-node-js as base
-WORKDIR /usr/src/muon-node-js
 # Copy muon-node-js directory to linuxserver/wireguard image
 FROM linuxserver/wireguard as runner
-WORKDIR /app
-COPY --from=base /usr/src/muon-node-js /app
-
+COPY --from=base /usr/src/muon-node-js /usr/src/muon-node-js
+WORKDIR /usr/src/muon-node-js
 # Install Redis
 RUN apt-get update && apt-get install -y wget curl  redis-server 
 
