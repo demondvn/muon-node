@@ -36,7 +36,7 @@
 1/ replace `root/vpn/1` with place your file `wg0.conf`
 
        docker run -d \
-       --name=muon \
+       --name=muon-0 \
        --cap-add=NET_ADMIN \
        --cap-add=SYS_MODULE \
        -e PUID=1000 \
@@ -46,7 +46,7 @@
        -v /lib/modules:/lib/modules \
        --sysctl net.ipv4.conf.all.src_valid_mark=1 \
        --restart=unless-stopped \
-       muon-0
+       muon
         
 ## Config IP and NAT
 
@@ -63,4 +63,10 @@ valid_lft forever preferred_lft forever`
 
        sudo docker exec wg-easy iptables -t nat -A PREROUTING -p tcp --dport 4000 -j DNAT --to-destination 10.8.0.2
        sudo docker exec wg-easy iptables -t nat -A PREROUTING -p tcp --dport 8000 -j DNAT --to-destination 10.8.0.2
+## Check 
+        <vps ip>:8000/status
+        https://alice.muon.net/join/
+
+## Fix 
+* `addedToNetwork":false` > docker restart muon-0
 
