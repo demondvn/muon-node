@@ -8,7 +8,8 @@ fi
 
 # Read FILE argument with data
 FILE="$1"
-if !"$FILE" then 
+if ! "$FILE" 
+then 
     echo "missing file vps"
 fi
 # Read data from FILE and execute the commands for each row
