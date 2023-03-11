@@ -18,7 +18,7 @@ RUN apt-get install -y libssl1.1 mongodb-org
 #Node
 RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
 RUN apt-get install -y nodejs
-RUN npm i -g pm2 && npm i
+# RUN npm i -g pm2 && npm i
 # Expose ports
 EXPOSE 4000
 EXPOSE 8000
