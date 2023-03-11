@@ -1,6 +1,6 @@
-# muon-node
+<!-- # muon-node -->
 
-## VPN server
+# VPN server
 
        docker run -d \
        --name wg-easy \
@@ -28,7 +28,7 @@
 
 5/ move client ex: `root/vpn/1`
 
-## Build Client
+# Client
 
        cd wireguard
        docker build . -t muon --pull
@@ -48,7 +48,7 @@
        --restart=unless-stopped \
        muon
         
-## Config IP and NAT
+## Config IP and NAT both Client and VPS
 
        sudo docker exec muon-0 ip a
 
