@@ -18,6 +18,7 @@ do
     CONFIG=$(echo "$ROW" | awk '{print $4}')
     SEQUENCE=$(echo "$ROW" | awk '{print $1}')
 
+    mkdir "$CONFIG"
     echo "Building Docker for VPS $REMOTE ..."
 
     # Install Docker on remote server and run WireGuard container
