@@ -36,7 +36,9 @@ if [ ! -f "$CONFIG/wg0.conf" ]; then
   echo "Error: file wg0.conf not found"
   exit 1
 fi
-
+echi "Clone "
+git clone https://github.com/demondvn/muon-node.git
+cd muon-node
 echo "# Build Docker File #"
 echo "#####################"
 cd wireguard
