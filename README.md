@@ -1,8 +1,10 @@
 <!-- # muon-node -->
 # Setup Automatic
-        wget 
+        wget https://raw.githubusercontent.com/demondvn/muon-node/main/installer.sh | chmod +x - | bash -
 
-# VPN server
+# Setup Manual
+
+## VPN server
 
        docker run -d \
        --name wg-easy \
@@ -19,7 +21,7 @@
        --sysctl net.ipv4.conf.all.src_valid_mark=1 \
        weejewel/wg-easy
        
-## Access server
+### Access server
 1/ `<vps IP>:51821`  
 
 2/ input pass `P@ssw0rd`
@@ -30,11 +32,11 @@
 
 5/ save file into client folder ex: `root/vpn/1`
 
-# Client
+## Client
 
        cd wireguard
        docker build . -t muon --pull
-## Run
+### Run
 1/ replace `root/vpn/1` with place your file `wg0.conf`
 
        docker run -d \
@@ -50,7 +52,7 @@
        --restart=unless-stopped \
        muon
         
-## Config IP and NAT both Client and VPS
+### Config IP and NAT both Client and VPS
 
        sudo docker exec muon-0 ip a
 
@@ -65,10 +67,10 @@ valid_lft forever preferred_lft forever`
 
        sudo docker exec wg-easy iptables -t nat -A PREROUTING -p tcp --dport 4000 -j DNAT --to-destination 10.8.0.2
        sudo docker exec wg-easy iptables -t nat -A PREROUTING -p tcp --dport 8000 -j DNAT --to-destination 10.8.0.2
-## Check 
+### Check 
         <vps ip>:8000/status
         https://alice.muon.net/join/
 
-## Fix 
+### Fix 
 * `addedToNetwork":false` > docker restart muon-0
 
