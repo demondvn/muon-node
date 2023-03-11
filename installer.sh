@@ -39,40 +39,11 @@ do
             --cap-add=SYS_MODULE \
             --sysctl net.ipv4.ip_forward=1 \
             --sysctl net.ipv4.conf.all.src_valid_mark=1 \
-            weejewel/wg-easy"
+            weejewel/wg-easy" && \
+        
 
-    # Function to get client ID
-    get_client_id() {
-        local name="wg0"
-
-        curl -s -X POST \
-            -H "Content-Type: application/json" \
-            -d '{"password":"P@ssw0rd"}' \
-            -c "$REMOTE.txt" \
-            "http://$REMOTE:51821/api/session"
-
-        curl -s -X POST \
-            -H "Content-Type: application/json" \
-            -d "{\"name\":\"$name\"}" \
-            -b "$REMOTE.txt" \
-            "http://$REMOTE:51821/api/wireguard/client"
-
-        local url="http://$REMOTE:51821/api/wireguard/client"
-        local response=$(curl -s "$url")
-        local id=$(echo "$response" | jq -r ".[] | select(.name == \"$name\") | .id")
-
-        echo "$id"
-    }
-
-    # Function to download WireGuard configuration
-    download_config() {
-        local dir="$1"
-        local id=$(get_client_id)
-        local url="http://$REMOTE:51821/api/wireguard/client/$id/configuration"
-        local filename="$dir/wg0.conf"
-
-        curl -s "$url" -o "$filename"
-    }
+    
+    
 
     # Download WireGuard configuration
     download_config "$CONFIG"
