@@ -18,6 +18,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
 RUN apt-get install -y nodejs cron
 RUN npm i pm2 -g
 RUN pm2 install pm2-logrotate
+RUN git pull && npm i
 # Expose ports
 EXPOSE 4000
 EXPOSE 8000
