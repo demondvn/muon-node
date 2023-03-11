@@ -37,6 +37,10 @@ if [ ! -f "$CONFIG/wg0.conf" ]; then
   exit 1
 fi
 
+echo "# Build Docker File #"
+echo "#####################"
+cd wireguard
+docker build . -t muon --pull
 # Prompt the user for the Docker sequence number
 read -p "Enter the Docker sequence number: " SEQUENCE
 
