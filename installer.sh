@@ -20,12 +20,13 @@ sshpass -p '$PASS' ssh root@$REMOTE "sudo docker run -d \
        --sysctl net.ipv4.conf.all.src_valid_mark=1 \
        weejewel/wg-easy"
 
-# Exit SSH
-ssh root@$REMOTE "exit"
+
+
 
 # Print instructions for the user
 echo "User login http://$REMOTE:51821 with P@ssw0rd"
 echo "Create client 'wg0' and download the setting file"
+sleep 60
 echo "Save the file into client folder: 'root/vpn/1'"
 
 # Prompt the user for the config folder
