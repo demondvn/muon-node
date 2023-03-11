@@ -1,4 +1,6 @@
 <!-- # muon-node -->
+# Setup Automatic
+        wget 
 
 # VPN server
 
@@ -26,7 +28,7 @@
 
 4/ edit wg0.conf remove `::/0`     
 
-5/ move client ex: `root/vpn/1`
+5/ save file into client folder ex: `root/vpn/1`
 
 # Client
 
