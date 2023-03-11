@@ -26,7 +26,7 @@ do
 
     # Install Docker on remote server and run WireGuard container
     sshpass -p "$PASS" ssh root@"$REMOTE" "apt-get update && \
-        apt-get install docker.io -y && \
+        apt-get install docker.io wget -y && \
         docker run -d --name wg-easy \
             -e WG_HOST=$(curl https://ipinfo.io/ip) \
             -e PASSWORD=P@ssw0rd \
@@ -39,14 +39,14 @@ do
             --cap-add=SYS_MODULE \
             --sysctl net.ipv4.ip_forward=1 \
             --sysctl net.ipv4.conf.all.src_valid_mark=1 \
-            weejewel/wg-easy" && \
-        
+            weejewel/wg-easy && \
+        wget https://raw.githubusercontent.com/demondvn/muon-node/main/genkey.sh && chmod +x genkey.sh && ./genkey.sh"
+
+
+    sshpass -p "$PASS" scp root@"$REMOTE":/root/wg0.conf "$CONFIG/wg0.conf"
+    
 
     
-    
-
-    # Download WireGuard configuration
-    download_config "$CONFIG"
 
     # Check if the config file exists
     if [ ! -f "$CONFIG/wg0.conf" ]; then
