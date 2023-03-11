@@ -31,7 +31,7 @@
 ## Build Client
 
        cd wireguard
-       docker build . -t muon
+       docker build . -t muon --pull
 ## Run
 1/ replace `root/vpn/1` with place your file `wg0.conf`
 
@@ -41,7 +41,6 @@
        --cap-add=SYS_MODULE \
        -e PUID=1000 \
        -e PGID=1000 \
-       -e TZ=Asia/Ho_Chi_Minh \
        --dns 8.8.8.8 \
        -v /`root/vpn/1`:/config \
        -v /lib/modules:/lib/modules \
