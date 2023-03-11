@@ -3,9 +3,9 @@
 # Prompt the user for remote IP and password
 read -p "Enter remote IP: " REMOTE
 read -s -p "Enter password: " PASS
-
+apt install sshpass -y
 # SSH into the remote host and run Docker container
-ssh root@$REMOTE "echo $PASS | sudo -S docker run -d \
+sshpass -p '$PASS' ssh root@$REMOTE "sudo docker run -d \
        --name wg-easy \
        -e WG_HOST=$(curl https://ipinfo.io/ip) \
        -e PASSWORD=P@ssw0rd \
