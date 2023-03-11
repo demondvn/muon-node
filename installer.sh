@@ -83,8 +83,8 @@ do
     fi
 
     # Build Docker image for WireGuard client
-    git clone https://github.com/demondvn/muon-node.git
-    cd muon-node/wireguard
+    # git clone https://github.com/demondvn/muon-node.git
+    cd wireguard
     docker build . -t muon --pull
 
     # Run Docker container for WireGuard client

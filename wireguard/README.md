@@ -1,9 +1,10 @@
 <!-- # muon-node -->
 # Setup Automatic
-       wget https://raw.githubusercontent.com/demondvn/muon-node/main/installer.sh && \
+       
        chmod +x installer.sh
-# Run 
        ./installer.sh <vps file> 
+
+       
 
 # Setup Manual
 
