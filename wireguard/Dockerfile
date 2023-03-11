@@ -17,12 +17,13 @@ RUN apt-get update
 RUN apt-get install -y libssl1.1 mongodb-org 
 #Node
 RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
-RUN apt-get install -y nodejs
+RUN apt-get install -y nodejs cron
 RUN npm i pm2 -g
+RUN pm2 install pm2-logrotate
 # Expose ports
 EXPOSE 4000
 EXPOSE 8000
-
+ENV DOCKER_MODE=1
 # Copy script.sh and make it executable
 COPY script.sh script.sh
 RUN chmod +x script.sh
