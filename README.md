@@ -42,7 +42,7 @@
        -e PUID=1000 \
        -e PGID=1000 \
        --dns 8.8.8.8 \
-       -v /`root/vpn/1`:/config \
+       -v /root/vpn/1:/config \
        -v /lib/modules:/lib/modules \
        --sysctl net.ipv4.conf.all.src_valid_mark=1 \
        --restart=unless-stopped \
@@ -54,7 +54,7 @@
 
 `3: wg0: <POINTOPOINT,NOARP,UP,LOWER_UP> mtu 1420 qdisc noqueue state UNKNOWN group default qlen 1000
 link/none 
-inet <b>10.8.0.2<b>/24 scope global wg0
+inet 10.8.0.2/24 scope global wg0
 valid_lft forever preferred_lft forever`
 
 1/ ip is `10.8.0.2`
