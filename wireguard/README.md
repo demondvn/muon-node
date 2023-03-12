@@ -1,5 +1,5 @@
 <!-- # muon-node -->
-# Setup Automatic
+# Setup Automatic (Not complete)
        
        chmod +x installer.sh
        ./installer.sh <vps file> 
