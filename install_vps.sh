@@ -30,7 +30,7 @@ do
     wget https://raw.githubusercontent.com/demondvn/muon-node/main/genkey.sh && \
     chmod +x genkey.sh && ./genkey.sh $WIREGUARD_PASS"
     sleep 60 * 5
-    CONFIG= "vpn/$REMOTE"
+    CONFIG="vpn/$REMOTE"
 
     mkdir "$CONFIG"
 
