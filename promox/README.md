@@ -28,7 +28,7 @@
 4/ edit wg0.conf remove `::/0`     
 
 ## Client
-        sudo apt install wireguard
+        sudo apt install wireguard -y
         sudo nano /etc/wireguard/wg0.conf
         wg-quick up wg0
 ## Check IP
