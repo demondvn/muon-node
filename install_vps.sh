@@ -43,31 +43,31 @@ do
 
     
 
-    # Check if the config file exists
-    if [  -f "$CONFIG/wg0.conf" ]; then
-        # Build Docker image for WireGuard client
-        # git clone https://github.com/demondvn/muon-node.git
-        cd wireguard
-        docker build . -t muon --pull
+    # # Check if the config file exists
+    # if [  -f "$CONFIG/wg0.conf" ]; then
+    #     # Build Docker image for WireGuard client
+    #     # git clone https://github.com/demondvn/muon-node.git
+    #     cd wireguard
+    #     docker build . -t muon --pull
 
-        # Run Docker container for WireGuard client
-        docker run -d \
-        --name=muon-"$SEQUENCE" \
-        --cap-add=NET_ADMIN \
-        --cap-add=SYS_MODULE \
-        -e PUID=1000 \
-        -e PGID=1000 \
-        --dns 8.8.8.8 \
-        -v "$CONFIG":/config \
-        -v /lib/modules:/lib/modules \
-        --sysctl net.ipv4.conf.all.src_valid_mark=1 \
-        --restart=unless-stopped \
-        muon
+    #     # Run Docker container for WireGuard client
+    #     docker run -d \
+    #     --name=muon-"$SEQUENCE" \
+    #     --cap-add=NET_ADMIN \
+    #     --cap-add=SYS_MODULE \
+    #     -e PUID=1000 \
+    #     -e PGID=1000 \
+    #     --dns 8.8.8.8 \
+    #     -v "$CONFIG":/config \
+    #     -v /lib/modules:/lib/modules \
+    #     --sysctl net.ipv4.conf.all.src_valid_mark=1 \
+    #     --restart=unless-stopped \
+    #     muon
 
-        # Print status
-        curl "$REMOTE":8000/status
+    #     # Print status
+    #     curl "$REMOTE":8000/status
         
-    fi
+    # fi
     echo "Error: File $CONFIG/wg0.conf not found"
    
 done < "$FILE"
