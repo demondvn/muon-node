@@ -1,32 +1,30 @@
-FROM muonnode/muon-node-js 
+FROM muonnode/muon-node-js as base
 # Copy muon-node-js directory to linuxserver/wireguard image
-
+FROM linuxserver/wireguard as runner
+COPY --from=base /usr/src/muon-node-js /usr/src/muon-node-js
 WORKDIR /usr/src/muon-node-js
 # Install Redis
 RUN apt-get update && apt-get install -y wget curl  redis-server 
 
 # Install MongoDB
-
-# Add MongoDB 6.0 repository and GPG key
 RUN wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | apt-key add -
 RUN echo "deb http://repo.mongodb.org/apt/debian buster/mongodb-org/6.0 main" | tee /etc/apt/sources.list.d/mongodb-org-6.0.list
-
-# Add Ubuntu Focal Security repository and GPG key
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 3B4FE6ACC0B21F32
 RUN echo "deb http://security.ubuntu.com/ubuntu focal-security main" |  tee /etc/apt/sources.list.d/focal-security.list
 
-RUN apt-get install --reinstall ca-certificates
-# Update packages with authenticated sources
-RUN apt-get update
-RUN apt-get install -y libssl1.1 mongodb-org  wireguard resolvconf
-
-
+RUN apt-get update 
+RUN apt-get install -y libssl1.1 mongodb-org 
+#Node
+RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
+RUN apt-get install -y nodejs cron
+RUN npm i pm2 -g
+RUN pm2 install pm2-logrotate
+RUN git pull && npm i
 # Expose ports
 EXPOSE 4000
 EXPOSE 8000
+ENV DOCKER_MODE=1
 # Copy script.sh and make it executable
 COPY script.sh script.sh
-VOLUME /config
 RUN chmod +x script.sh
 
 # Run script.sh as the default command
