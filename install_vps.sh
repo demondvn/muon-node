@@ -28,10 +28,9 @@ do
     # Install Docker on remote server and run WireGuard container
     sshpass -p "$PASS" ssh "$USER"@"$REMOTE" "apt update && apt install wget -y && \
     wget https://raw.githubusercontent.com/demondvn/muon-node/main/genkey.sh && \
-    chmod +x genkey.sh && ./genkey.sh $WIREGUARD_PASS
-    "
+    chmod +x genkey.sh && ./genkey.sh $WIREGUARD_PASS"
 
-    CONFIG = "vpn/$REMOTE"
+    CONFIG= "vpn/$REMOTE"
 
     mkdir "$CONFIG"
 
