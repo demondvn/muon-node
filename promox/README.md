@@ -28,6 +28,7 @@
 4/ edit wg0.conf remove `,::/0`  > `AllowedIPs = 0.0.0.0/0`  
 
 ## Client
+        apt-get update && sudo apt-get install resolvconf
         sudo apt install wireguard -y
         sudo nano /etc/wireguard/wg0.conf
         wg-quick up wg0
