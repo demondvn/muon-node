@@ -12,6 +12,7 @@ FILE="$1"
 if [-z "$FILE" ]
 then 
     echo "missing file vps"
+    exit 1
 fi
 read -p "Input Wireguard password:" WIREGUARD_PASS
 # Read data from FILE and execute the commands for each row
