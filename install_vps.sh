@@ -16,7 +16,7 @@ then
 fi
 read -p "Input Wireguard password:" WIREGUARD_PASS
 # Read data from FILE and execute the commands for each row
-for row in $(cat $FILE); do
+while read line; do
     # Extract REMOTE, PASS, CONFIG and SEQUENCE from the row
     REMOTE=$(echo "$ROW" | awk '{print $1}')
     USER=$(echo "$ROW" | awk '{print $2}')
@@ -67,4 +67,4 @@ for row in $(cat $FILE); do
     # fi
     # echo "Error: File $CONFIG/wg0.conf not found"
     
-done 
+done < vps
