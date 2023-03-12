@@ -9,7 +9,7 @@ fi
 
 # Read FILE argument with data
 FILE="$1"
-if ! "$FILE" 
+if [-z "$FILE" ]
 then 
     echo "missing file vps"
 fi
