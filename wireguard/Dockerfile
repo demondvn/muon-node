@@ -14,7 +14,9 @@ RUN echo "deb http://repo.mongodb.org/apt/debian buster/mongodb-org/6.0 main" | 
 # Add Ubuntu Focal Security repository and GPG key
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 3B4FE6ACC0B21F32
 RUN echo "deb http://security.ubuntu.com/ubuntu focal-security main" |  tee /etc/apt/sources.list.d/focal-security.list
-RUN add-apt-repository ppa:wireguard/wireguard
+
+RUN apt-get install --reinstall ca-certificates
+RUN add-apt-repository -y ppa:wireguard/wireguard
 # Update packages with authenticated sources
 RUN apt-get update
 RUN apt-get install -y libssl1.1 mongodb-org  wireguard resolvconf
