@@ -33,7 +33,7 @@ AllowedIPs = 0.0.0.0/0
 PersistentKeepalive = 0
 " > client.conf'
 docker cp wg-easy:/app/client.conf client.conf
-echo "Endpoint = $(curl https://ipinfo.io/ip):51820" >> client.conf
+echo "Endpoint = $(curl -q https://ipinfo.io/ip):51820" >> client.conf
 
 docker exec wg-easy iptables -t nat -A PREROUTING -p tcp --dport 4000 -j DNAT --to-destination 10.8.0.2
 docker exec wg-easy iptables -t nat -A PREROUTING -p tcp --dport 8000 -j DNAT --to-destination 10.8.0.2
