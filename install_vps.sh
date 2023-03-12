@@ -16,7 +16,7 @@ then
 fi
 read -p "Input Wireguard password:" WIREGUARD_PASS
 # Read data from FILE and execute the commands for each row
-for row in $(cat FILE); 
+for row in $(cat $FILE); 
 do
     # Extract REMOTE, PASS, CONFIG and SEQUENCE from the row
     REMOTE=$(echo "$ROW" | awk '{print $1}')
