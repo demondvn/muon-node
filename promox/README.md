@@ -25,7 +25,7 @@
 
 3/ create client `wg0` > download setting file  
 
-4/ edit wg0.conf remove `::/0`     
+4/ edit wg0.conf remove `,::/0`  > `AllowedIPs = 0.0.0.0/0`  
 
 ## Client
         sudo apt install wireguard -y
