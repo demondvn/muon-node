@@ -28,43 +28,12 @@ while read line; do
     sshpass -p "$PASS" ssh "$USER"@"$REMOTE" "apt update && apt install wget -y && \
     wget https://raw.githubusercontent.com/demondvn/muon-node/main/genkey.sh && \
     chmod +x genkey.sh && ./genkey.sh $WIREGUARD_PASS"
-    CONFIG="vpn/$REMOTE"
 
-    mkdir "$CONFIG"
+    mkdir "$REMOTE"
 
     # Generate client private key
 
 
-    sshpass -p "$PASS" scp "$USER"@"$REMOTE":/root/client.conf "$CONFIG/wg0.conf"
-    ls  "$CONFIG"
-
-    
-
-    # # Check if the config file exists
-    # if [  -f "$CONFIG/wg0.conf" ]; then
-    #     # Build Docker image for WireGuard client
-    #     # git clone https://github.com/demondvn/muon-node.git
-    #     cd wireguard
-    #     docker build . -t muon --pull
-
-    #     # Run Docker container for WireGuard client
-    #     docker run -d \
-    #     --name=muon-"$SEQUENCE" \
-    #     --cap-add=NET_ADMIN \
-    #     --cap-add=SYS_MODULE \
-    #     -e PUID=1000 \
-    #     -e PGID=1000 \
-    #     --dns 8.8.8.8 \
-    #     -v "$CONFIG":/config \
-    #     -v /lib/modules:/lib/modules \
-    #     --sysctl net.ipv4.conf.all.src_valid_mark=1 \
-    #     --restart=unless-stopped \
-    #     muon
-
-    #     # Print status
-    #     curl "$REMOTE":8000/status
-        
-    # fi
-    # echo "Error: File $CONFIG/wg0.conf not found"
-    
-done < vps
+    sshpass -p "$PASS" scp "$USER"@"$REMOTE":/root/client.conf "$REMOTE/wg0.conf"
+    ls  "$REMOTE"
+done < "$FILE"
