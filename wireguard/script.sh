@@ -1,11 +1,10 @@
 #!/bin/bash
-cp /config/wg0.conf  /etc/wireguard/wg0.conf
 cp /config/.env .
-sed -i 's/, ::\/0//g' /etc/wireguard/wg0.conf
-if [ ! -f "/etc/wireguard/wg0.conf" ] ;then
+sed -i 's/, ::\/0//g' /config/wg0.conf
+if [ ! -f "/config/wg0.conf" ] ;then
     exit 1
 fi
-wg-quick up wg0
+
 ./scripts/auto-update.sh -a setup -p 'muon-node-js-testnet'
 export _PM2=/usr/bin/pm2; 
 export _NPM=/usr/bin/npm; 
