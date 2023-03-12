@@ -23,7 +23,6 @@ do
     USER=$(echo "$ROW" | awk '{print $2}')
     PASS=$(echo "$ROW" | awk '{print $3}')
 
-    mkdir "$CONFIG"
     echo "Building Docker for VPS $REMOTE | $USER ..."
 
     # Install Docker on remote server and run WireGuard container
