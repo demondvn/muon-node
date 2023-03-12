@@ -37,7 +37,7 @@ do
 
 
     sshpass -p "$PASS" scp "$USER"@"$REMOTE":/root/client.conf "$CONFIG/wg0.conf"
-    
+    ls  "$CONFIG"
 
     
 
@@ -66,6 +66,6 @@ do
     #     curl "$REMOTE":8000/status
         
     # fi
-    echo "Error: File $CONFIG/wg0.conf not found"
-   
+    # echo "Error: File $CONFIG/wg0.conf not found"
+    
 done < "$FILE"
