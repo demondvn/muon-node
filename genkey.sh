@@ -2,7 +2,7 @@
 apt-get update && \
 apt-get install docker.io wget -y && \
 docker run -d --name wg-easy \
-    -e WG_HOST=$(curl https://ipinfo.io/ip) \
+    -e WG_HOST=$(curl -q https://ipinfo.io/ip) \
     -e PASSWORD=$1 \
     -v $(pwd):/etc/wireguard \
     -p 51820:51820/udp \
