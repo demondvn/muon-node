@@ -10,7 +10,6 @@ export _PM2=/usr/bin/pm2;
 export _NPM=/usr/bin/npm; 
 export _PM2_APP='muon-node-js-testnet'; 
 node testnet-generate-env.js 
-cp .env /config/.env
 ./scripts/auto-update.sh -a update
 service cron start
 service redis-server start &
