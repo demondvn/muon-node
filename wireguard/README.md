@@ -13,7 +13,7 @@
        docker run -d \
        --name wg-easy \
        -e WG_HOST=$(curl https://ipinfo.io/ip) \
-       -e PASSWORD=P@ssw0rd \
+       -e PASSWORD=PASSWORD \
        -v $(pwd):/etc/wireguard \
        -p 51820:51820/udp \
        -p 51821:51821/tcp \
@@ -28,7 +28,7 @@
 ### Access server
 1/ `<vps IP>:51821`  
 
-2/ input pass `P@ssw0rd`
+2/ input pass `PASSWORD`
 
 3/ create client `wg0` > download setting file  
 
