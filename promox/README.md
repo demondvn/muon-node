@@ -15,8 +15,6 @@
     --sysctl net.ipv4.conf.all.src_valid_mark=1 \
     weejewel/wg-easy
 
-    sudo docker exec wg-easy iptables -t nat -A PREROUTING -p tcp --dport 4000 -j DNAT --to-destination 10.8.0.2
-    sudo docker exec wg-easy iptables -t nat -A PREROUTING -p tcp --dport 8000 -j DNAT --to-destination 10.8.0.2
 
 ### Access server
 1/ `<vps IP>:51821`  
