@@ -67,10 +67,6 @@ valid_lft forever preferred_lft forever`
 
 1/ ip is `10.8.0.2`
 
-2/ connect ssh to VPS
-
-       sudo docker exec wg-easy iptables -t nat -A PREROUTING -p tcp --dport 4000 -j DNAT --to-destination 10.8.0.2
-       sudo docker exec wg-easy iptables -t nat -A PREROUTING -p tcp --dport 8000 -j DNAT --to-destination 10.8.0.2
 ### Check 
         <vps ip>:8000/status
         https://alice.muon.net/join/
