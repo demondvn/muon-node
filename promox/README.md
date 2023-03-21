@@ -14,8 +14,8 @@
 ## Client
         apt-get update
         sudo apt install openvpn -y
-        sudo nano /etc/openvpn/<name> 
-- paste data from (*)
+        sudo nano /etc/openvpn/<name>.conf
+- paste data from (*) `<name>.conf`
         
         systemctl start openvpn@<name>
         
