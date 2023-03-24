@@ -10,31 +10,17 @@
 
 ## VPN server
 
-       docker run -d \
-       --name wg-easy \
-       -e WG_HOST=$(curl https://ipinfo.io/ip) \
-       -e PASSWORD=PASSWORD \
-       -v $(pwd):/etc/wireguard \
-       -p 51820:51820/udp \
-       -p 51821:51821/tcp \
-       -p 4000:4000 \
-       -p 8000:8000 \
-       --cap-add=NET_ADMIN \
-       --cap-add=SYS_MODULE \
-       --sysctl net.ipv4.ip_forward=1 \
-       --sysctl net.ipv4.conf.all.src_valid_mark=1 \
-       weejewel/wg-easy
+       wget https://git.io/wireguard -O wireguard-install.sh && bash wireguard-install.sh
        
+- [https://thuanbui.me/cai-dat-wireguard-vpn/](https://thuanbui.me/cai-dat-wireguard-vpn/)
 ### Access server
-1/ `<vps IP>:51821`  
+1/ cat file conf
 
-2/ input pass `PASSWORD`
+2/ create client `wg0` > download setting file  
 
-3/ create client `wg0` > download setting file  
+3/ edit wg0.conf remove `::/0`     
 
-4/ edit wg0.conf remove `::/0`     
-
-5/ save file into client folder ex: `root/vpn/1`
+4/ save file into client folder ex: `root/vpn/1`
 
 ## Client
 
