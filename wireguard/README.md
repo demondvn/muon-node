@@ -60,3 +60,6 @@ valid_lft forever preferred_lft forever`
 ### Fix 
 * `addedToNetwork":false` > docker restart muon-0
 
+### update 
+       docker pull muonnode/muon-node-js
+- Start again at settup
