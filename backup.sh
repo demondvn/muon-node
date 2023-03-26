@@ -8,7 +8,7 @@ for name in $(docker ps --format '{{.Names}}'); do
 
     # Copy .env file to /config/.env inside the container
     #docker exec $name cp .env /config/.env
-    if [ ! -d $name ]; then
+    if [ ! -d backup/$name ]; then
       mkdir backup/$name
     fi
     
@@ -16,4 +16,4 @@ for name in $(docker ps --format '{{.Names}}'); do
   fi
 
 done
-ls backup
+tree backup
