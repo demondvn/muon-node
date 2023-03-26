@@ -9,7 +9,7 @@ for name in $(docker ps --format '{{.Names}}'); do
     # Copy .env file to /config/.env inside the container
     #docker exec $name cp .env /config/.env
     if [ ! -d $name ]; then
-      mkdir $name
+      mkdir backup/$name
     fi
     
         docker cp $name:/usr/src/muon-node-js/.env backup/$name/.env
