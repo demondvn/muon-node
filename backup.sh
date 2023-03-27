@@ -12,7 +12,7 @@ for name in $(docker ps --format '{{.Names}}'); do
       mkdir backup/$name
     fi
     
-        docker cp $name:/usr/src/muon-node-js/.env backup/$name/.env
+        docker cp $name:/usr/src/muon-node-js/.env backup/$name/backup.env
         
   fi
 
