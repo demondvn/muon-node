@@ -9,6 +9,7 @@ fi
 export _PM2=/usr/bin/pm2; 
 export _NPM=/usr/bin/npm; 
 export _PM2_APP='muon-node-js-testnet'; 
+git remote set-url origin https://github.com/muon-protocol/muon-node-js.git
 node testnet-generate-env.js 
 ./scripts/auto-update.sh -a update
 service cron start
