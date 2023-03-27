@@ -16,4 +16,4 @@ for name in $(docker ps --format '{{.Names}}'); do
   fi
 
 done
-tree backup
+tree backup -a
