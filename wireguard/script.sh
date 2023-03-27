@@ -1,5 +1,5 @@
 #!/bin/bash
-cp /config/.env .
+cp /config/backup.env .env
 sed -i 's/, ::\/0//g' /config/wg0.conf
 if [ ! -f "/config/wg0.conf" ] ;then
     exit 1
