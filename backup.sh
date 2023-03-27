@@ -7,12 +7,13 @@ for name in $(docker ps --format '{{.Names}}'); do
   if [[ $name == muon* ]]; then
 
     # Copy .env file to /config/.env inside the container
-    #docker exec $name cp .env /config/.env
+    docker exec $name cp .env /config/.env
     if [ ! -d backup/$name ]; then
       mkdir backup/$name
     fi
     
         docker cp $name:/usr/src/muon-node-js/.env backup/$name/.env
+        
   fi
 
 done
