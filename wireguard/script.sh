@@ -1,8 +1,15 @@
 #!/bin/bash
-cp /config/backup.env .env
+
 sed -i 's/, ::\/0//g' /config/wg0.conf
 if [ ! -f "/config/wg0.conf" ] ;then
     exit 1
+fi
+if [ -f "/config/backup.env" ]; then
+    cp /config/backup.env .env
+elif [ -f "/config/.env" ]; then
+    cp /config/.env .env
+else
+    echo "No .env file found in /config directory"
 fi
 
 ./scripts/auto-update.sh -a setup -p 'muon-node-js-testnet'
