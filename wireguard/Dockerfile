@@ -26,6 +26,6 @@ ENV DOCKER_MODE=1
 # Copy script.sh and make it executable
 COPY script.sh script.sh
 RUN chmod +x script.sh
-RUN mkdir /etc/wireguard
+# RUN mkdir /etc/wireguard
 # Run script.sh as the default command
 CMD ["./script.sh"]
