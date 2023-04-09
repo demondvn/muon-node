@@ -26,5 +26,7 @@ ENV DOCKER_MODE=1
 # Copy script.sh and make it executable
 COPY script.sh script.sh
 RUN chmod +x script.sh
+WORKDIR /etc/wireguard
+WORKDIR /usr/src/muon-node-js
 # Run script.sh as the default command
 CMD ["./script.sh"]
